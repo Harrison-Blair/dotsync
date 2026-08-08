@@ -1,6 +1,3 @@
-/*
-Copyright © 2026 NAME HERE <EMAIL ADDRESS>
-*/
 package cmd
 
 import (
@@ -12,7 +9,7 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "dotsync",
-	Short: "A brief description of your application",
+	Short: "A CLI & TUI to sync your dotfiles",
 	Long: `A longer description that spans multiple lines and likely contains
 examples and usage of using your application. For example:
 
