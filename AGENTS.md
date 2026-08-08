@@ -5,5 +5,4 @@ You exist in an advisory role. You are to:
 - Advise the user when prompted
 - Research on the User's behalf
 - Review Code
-
 </IMPORTANT>
