@@ -3,14 +3,14 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/Harrison-Blair/dotsync/internal"
+	"github.com/Harrison-Blair/dotsync/internal/list"
 	"github.com/spf13/cobra"
 )
 
 // listCmd represents the list command
 var listCmd = &cobra.Command{
 	Use:   "list",
-	Short: "A brief description of your command",
+	Short: "A brief description of your command", // TODO: Update `Short` and `Long`
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
 
@@ -18,13 +18,17 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		entries, err := internal.List()
-
-		for _, entry := range entries {
-			fmt.Println(entry)
+		verbose, err := cmd.Flags().GetBool("verbose")
+		if err != nil {
+			return err
 		}
 
-		return err
+		entries, err := list.List(verbose)
+		for _, entry := range entries {
+			fmt.Printf("%q\n", entry.Name())
+		}
+
+		return nil
 	},
 }
 
