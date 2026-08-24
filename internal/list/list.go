@@ -24,6 +24,7 @@ func List(verbose bool) ([]os.DirEntry, error) {
 func getCandidates(verbose bool) ([]os.DirEntry, error) {
 	var candidates []os.DirEntry
 
+	// Config Directory
 	configDir, err := os.UserConfigDir()
 	if err != nil {
 		return candidates, fmt.Errorf("failed to get config directory: %w", err)
@@ -41,6 +42,7 @@ func getCandidates(verbose bool) ([]os.DirEntry, error) {
 	}
 	candidates = append(candidates, configEntires...)
 
+	// Home Directory
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
 		return candidates, fmt.Errorf("failed to get home directory: %w", err)

@@ -1,4 +1,4 @@
-module github.com/Harrison-Blair/dotsync
+module github.com/Harrison-Blair/dot
 
 go 1.26.5
 

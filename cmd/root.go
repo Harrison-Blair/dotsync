@@ -3,18 +3,16 @@ package cmd
 import (
 	"os"
 
+	"github.com/Harrison-Blair/dot/cmd/config"
+	"github.com/Harrison-Blair/dot/cmd/list"
 	"github.com/spf13/cobra"
 )
 
-// rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "dotsync",
-	Short: "A CLI & TUI to sync your dotfiles",
-	Long: `A CLI & TUI to sync your dotfiles with git	
-	`, // TODO: Get a better description once more stuff done
+	Use:   "dot",
+	Short: "A CLI to sync your dotfiles",
+	Long:  `A CLI to sync your dotfiles with git to the configured remote`,
 
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
 	// Run: func(cmd *cobra.Command, args []string) { },
 }
 
@@ -28,10 +26,14 @@ func Execute() {
 }
 
 func init() {
+	rootCmd.AddCommand(
+		list.ListCmd(),
+		config.ConfigCmd(),
+	)
+
 	// Here you will define your flags and configuration settings.
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
-
 	// rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.dotsync.yaml)")
 	rootCmd.PersistentFlags().BoolP("verbose", "v", false, "show verbose output")
 
